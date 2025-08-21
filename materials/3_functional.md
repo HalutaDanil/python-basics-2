@@ -1,14 +1,12 @@
-# Функциональная парадигма
+# Functional Paradigm
 
-Функциональная парадигма в программировании представляет подход, в котором программа строится на основе функций.
-Вместо последовательности изменяющихся состояний объектов, функциональная парадигма ставит акцент на определении и применении функций, которые преобразуют данные без изменения исходных значений.
+The functional paradigm in programming is an approach where programs are built around functions. Instead of a sequence of changing object states, the functional paradigm focuses on defining and applying functions that transform data without modifying the original values.
 
-В Python функциональная парадигма поддерживается такими концепциями, как функции высшего порядка, анонимные функции (лямбда-функции), декораторы, замыкания, рекурсия. Эти возможности позволяют создавать более гибкие и модульные
-программы.
+In Python, the functional paradigm is supported through concepts such as higher-order functions, anonymous functions (lambda functions), decorators, closures, and recursion. These features enable the creation of more flexible and modular programs.
 
-## Функции высшего порядка (Higher-Order Functions)
+## **Higher-Order Functions**
 
-Функциями высшего порядка называют функции, которые могут принимать другие функции в качестве аргументов или возвращать функции в качестве результатов.
+Higher-order functions are functions that can take other functions as arguments or return functions as results.
 
 ```python
 def apply_operation(x, y, operation):
@@ -24,15 +22,15 @@ def multiply(x, y):
 
 
 result = apply_operation(3, 4, add)
-print(result)  # Вывод: 7
+print(result)  # Output: 7
 
 result = apply_operation(3, 4, multiply)
-print(result)  # Вывод: 12
+print(result)  # Output: 12
 ```
 
-## Декораторы
+## **Decorators**
 
-Декораторы представляют собой функции, которые принимают другую функцию в качестве аргумента и возвращают новую функцию, обычно обернутую вокруг исходной. Декораторы позволяют добавлять функциональность к существующим функциям без необходимости внесения изменений в их код.
+Decorators are functions that take another function as an argument and return a new function, usually wrapped around the original one. Decorators allow you to add functionality to existing functions without modifying their code.
 
 ```python
 def uppercase_decorator(func):
@@ -48,26 +46,26 @@ def say_hello():
     return "hello"
 
 
-print(say_hello())  # Вывод: HELLO
+print(say_hello())  # Output: HELLO
 ```
 
-В этом примере у нас есть функция `uppercase_decorator`, которая принимает функцию `func` в качестве аргумента и возвращает обернутую функцию `wrapper`. Внутри `wrapper` вызывается `func`, и результат преобразуется в верхний регистр перед возвратом. Затем, используя синтаксис декоратора с символом `@`, мы применяем декоратор `uppercase_decorator` к функции `say_hello`. Теперь при вызове `say_hello()` исходная функция обернута декоратором, и результат будет преобразован в верхний регистр. Декораторы могут быть полезны для различных задач, таких как логирование, проверка аутентификации, кэширование и многое другое.
+In this example, we have a function `uppercase_decorator` that takes another function `func` as an argument and returns a wrapped function `wrapper`. Inside wrapper, `func` is called, and the result is converted to uppercase before being returned. Then, using the decorator syntax with the `@` symbol, we apply `uppercase_decorator` to the `say_hello` function. Now, when `say_hello()` is called, the original function is wrapped by the decorator, and its result will be transformed to uppercase. Decorators can be useful for various tasks such as logging, authentication checks, caching, and much more.
 
-## Анонимные функции (Лямбда-функции)
+## **Anonymous Functions (Lambda Functions)**
 
-Анонимными или лямбда-функциями называют короткие функции, которые могут быть определены в одной строке. Они полезны, когда нужна небольшая функция для кратковременного использования.
+Anonymous or lambda functions are short functions that can be defined in a single line. They are useful when you need a small function for short-term use.
 
 ```python
 add = lambda x, y: x + y
 result = add(3, 4)
-print(result)  # Вывод: 7
+print(result)  # Output: 7
 ```
 
-## Замыкания (Closures)
+## **Closures**
 
-Замыканиями называют функции, которые запоминают значения из окружающей ее области видимости, даже если эта область видимости завершает свою работу. В примере вызывается `outer_function`, которая создает внутри функцию `inner_function`.
+Closures are functions that remember the values from their enclosing scope, even if that scope has finished executing. In the example, `outer_function` is called, which defines an `inner_function` inside it.  
 
-В обычной ситуации внутренние функции недоступны снаружи внешней функции. Несмотря на это, здесь можно получить доступ к внутренней функции через результат выполнения внешней, даже после ее завершения. Этот подход называется замыканием.
+Normally, inner functions are not accessible outside the outer function. However, in this case, the inner function can still be accessed through the result of the outer function, even after it has completed. This technique is called a closure.
 
 ```python
 def outer_function(x):
@@ -79,25 +77,24 @@ def outer_function(x):
 
 closure = outer_function(10)
 result = closure(5)
-print(result)  # Вывод: 15
+print(result)  # Output: 15
 ```
 
-## Функция map()
+## **The map() function**
 
-Функция `map()` применяет указанную функцию к каждому элементу последовательности (например, списка) и возвращает новый итерируемый объект с результатами.
+The `map()` function applies a specified function to each element of a sequence (e.g., a list) and returns a new iterable object with the results.
 
 ```python
 numbers = [1, 2, 3, 4, 5]
 squared = map(lambda x: x ** 2, numbers)
-print(list(squared))  # Вывод: [1, 4, 9, 16, 25]
+print(list(squared))  # Output: [1, 4, 9, 16, 25]
 ```
 
-## Функция filter()
-
-Функция `filter()` используется для фильтрации элементов последовательности с использованием функции-условия.
+## **The filter() function**  
+The `filter()` function is used to filter elements of a sequence using a predicate 
 
 ```python
 numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 even_numbers = filter(lambda x: x % 2 == 0, numbers)
-print(list(even_numbers))  # Вывод: [2, 4, 6, 8]
+print(list(even_numbers))  # Output: [2, 4, 6, 8]
 ```

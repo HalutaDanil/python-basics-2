@@ -1,45 +1,42 @@
-# Объектно-ориентированное программирование (ООП)
+# Object-Oriented Programming (OOP)
 
-ООП — это парадигма программирования, используемая для структурирования и организации кода в виде объектов, которые взаимодействуют друг с другом.
+OOP is a programming paradigm used to structure and organize code as interacting objects.
 
-Классы представляют собой шаблоны или чертежи для создания объектов. Они определяют атрибуты (переменные) и методы (функции), которые будут доступны объектам данного класса.
-В Python классы определяются с использованием ключевого слова `class`.
+**Classes** are templates or blueprints for creating objects. They define the attributes (variables) and methods (functions) that will be available to the objects of that class. In Python, classes are defined using the `class` keyword.
 
-Объекты являются конкретными экземплярами классов. Создаются на основе классов с использованием конструктора класса.
+**Objects** are specific instances of classes. They are created based on classes using a class constructor.
 
-Конструктором класса является метод `__init__`, который вызывается при создании нового объекта.
-В конструкторе можно задать начальные значения атрибутов объекта.
+The **constructor** of a class is the `__init__` method, which is called when a new object is created. Initial attribute values for the object can be set in the constructor.
 
-Атрибуты — это переменные, принадлежащие объектам класса. Они могут быть уникальными для каждого объекта (экземпляра) или общими для всех объектов данного класса. Атрибуты могут быть определены внутри методов класса или в конструкторе.
+**Attributes** are variables that belong to class objects. They can be unique to each object (instance) or shared among all objects of a class. Attributes can be defined inside class methods or in the constructor.
 
-Методы — это функции, принадлежащие объектам класса. Они могут выполнять операции с данными объекта или возвращать значения. Методы могут быть общими для всех объектов класса или уникальными для каждого объекта.
+**Methods** are functions that belong to class objects. They can perform operations on the object’s data or return values. Methods can be common to all objects of the class or unique to each one.
 
-«Dunder»-методы (также известные как специальные методы или магические методы) — это специальные методы с двойными подчеркиваниями в начале и в конце имени. Их много, они предоставляют возможность переопределять стандартное поведение операторов и встроенных функций для объектов данного класса. Например, `__init__` — специальный метод, вызываемый при создании объекта, `__str__` используется для определения строкового представления объекта, `__add__` определяет поведение оператора `+` для экземпляров класса и так далее.
+**Dunder methods** (also known as special methods or magic methods) are special methods with double underscores at the beginning and end of their names. There are many of them, and they allow overriding the default behavior of operators and built-in functions for class objects. For example, `__init__` is a special method called when an object is created, `__str__` is used to define the string representation of an object, `__add__` defines how the + operator works on instances of the class, and so on.
 
 ```python
 class Circle:
     def __init__(self, radius):
         self.radius = radius
-    
+
     def __str__(self):
-        return f"Круг радиусом {self.radius}"
-    
+        return f" Circle with radius {self.radius}"
+
     def __add__(self, other):
         if isinstance(other, Circle):
             return Circle(self.radius + other.radius)
         raise TypeError
 
-
 circle1 = Circle(5)
 circle2 = Circle(3)
 circle = circle1 + circle2
 
-print(circle1)  # Вывод: "Круг радиусом 5"
-print(circle2)  # Вывод: "Круг радиусом 3"
-print(circle)  # Вывод: "Круг радиусом 8"
+print(circle1)  # Output: "Circle with radius 5"
+print(circle2)  # Output: "Circle with radius 3"
+print(circle)  # Output: "Circle with radius 8"
 ```
 
-Статические методы — методы, которые привязаны к классу, а не к экземпляру класса. Вызываются через имя класса, а не через экземпляр. Статические методы в Python объявляются с использованием декоратора `@staticmethod`. Они не требуют доступа к экземпляру (`self`) и могут использоваться, даже если у вас вообще нет экземпляров класса. Это полезно, когда функциональность не зависит от состояния экземпляра, и не требуется доступа к атрибутам экземпляра.
+Static methods are methods that are bound to the class rather than its instances. They are called using the class name, not an instance. In Python, static methods are declared using the `@staticmethod` decorator. They do not require access to the instance (`self`) and can be used even if no instances of the class exist. This is useful when the functionality does not depend on the instance’s state and does not require access to instance attributes.
 
 ```python
 class MathOperations:
@@ -50,25 +47,20 @@ class MathOperations:
     @staticmethod
     def multiply(x, y):
         return x * y
-
-# Вызов статических методов через имя класса
-sum_result = MathOperations.add(3, 5)
+# Calling static methods using the class name
+sum_result = MathOperations.add(3, 5)  
 product_result = MathOperations.multiply(4, 6)
 
-print(f"Сумма: {sum_result}")  # Вывод: Сумма: 8
-print(f"Произведение: {product_result}")  # Вывод: Произведение: 24
+print(f"Sum: {sum_result}") # Output: Sum: 8  
+print(f"Product: {product_result}") # Output: Product: 24
 ```
 
-## Основные концепции
+## Key Concepts  
 
-### Абстракция
+### Abstraction
 
-Абстрактные классы в Python — это классы, которые не могут быть инстанциированы напрямую.
-Они служат для определения интерфейсов, которые другие классы должны реализовать. Такие классы
-могут содержать абстрактные методы, которые не имеют реализации в самом абстрактном классе,
-но должны быть реализованы в классах-наследниках. Это позволяет определять общие интерфейсы с различной реализацией каждого конкретного класса-наследника.
-
-Для создания абстрактных классов в Python используется модуль `abc` (Abstract Base Classes).
+Abstract classes in Python are classes that cannot be instantiated directly. They are used to define interfaces that other classes must implement. Such classes can include abstract methods that have no implementation in the abstract class itself but must be implemented in derived subclasses. This allows the definition of common interfaces with different implementations in each specific subclass.  
+To create abstract classes in Python, the abc module (Abstract Base Classes) is used.
 
 ```python
 from abc import ABC, abstractmethod
@@ -102,75 +94,66 @@ class Circle(Shape):
     def perimeter(self):
         return 2 * 3.14 * self.radius
 
-
-# Пример использования
+# Usage example
 square = Square(5)
 circle = Circle(3)
 
-print("Площадь квадрата:", square.area())       # Вывод: 25
-print("Периметр квадрата:", square.perimeter())  # Вывод: 20
-print("Площадь круга:", circle.area())           # Вывод: 28.26
-print("Периметр круга:", circle.perimeter())     # Вывод: 18.84
+print("Square area:", square.area()) # Output: 25
+print("Square perimeter:", square.perimeter()) # Output: 20
+print("Circle area:", circle.area()) # Output: 28.26
+print("Circle perimeter:", circle.perimeter()) # Output: 18.84
 ```
 
-В приведенном примере `Shape` — это абстрактный класс с абстрактными методами `area` и `perimeter`. Классы `Square` и `Circle` являются классами-наследниками, которые обязаны реализовать оба эти метода. Если какой-то из абстрактных методов не реализован в классе-наследнике, при попытке создания экземпляра такого класса будет исключение `TypeError`.
+In the example above, `Shape` is an abstract class with abstract methods `area` and `perimeter`. The `Square` and `Circle` classes are subclasses that are required to implement both of these methods. If any of the abstract methods are not implemented in a subclass, attempting to create an instance of such a class will result in a `TypeError`.
 
-### Наследование
+### Inheritance
+Inheritance allows the creation of new classes based on existing ones. A subclass inherits the attributes and methods of its parent class and can extend or override them without the need to rewrite the code. In Python, inheritance is implemented by adding parentheses with the name of the parent class after the class name, as in: `class A(B)`.
 
-Наследование позволяет создавать новые классы на основе существующих классов. Класс-наследник получает атрибуты и методы родительского класса и может их дополнять и/или переопределять без необходимости повторного написания кода. Наследование в Python осуществляется добавлением к имени класса круглых скобок с указанием внутри класса-предка: `class A(B)`.
+### Encapsulation
+Encapsulation means that data (variables) and the methods that work with this data are usually grouped inside a class. This makes it possible to hide implementation details and provide a clear interface for interacting with objects. This principle is called encapsulation.
 
-### Инкапсуляция
+In Python, there are three levels of access to class attributes and methods:
 
-Данные (переменные) и методы, которые работают с этими данными, обычно объединены внутри класса. Соответственно, можно скрыть детали реализации и предоставить интерфейс для работы с объектами. Этот принцип называется инкапсуляцией.
+### Public attributes and methods
+Accessible from anywhere in the program. Public attributes are usually defined without any special prefixes or suffixes.
 
-В Python есть три уровня доступа к атрибутам и методам класса.
+### Protected attributes and methods
+Accessible only within the class and its subclasses. Protected attributes are usually defined with a single underscore prefix, e.g., `_protected_attribute`.
 
-#### Публичные атрибуты и методы
+### Private attributes and methods
+Accessible only within the class and not accessible from the outside. Private attributes are usually defined with a double underscore prefix, e.g., `__private_attribute`.
 
-Доступны из любого места программы. Публичные атрибуты обычно определяются без использования специальных префиксов или суффиксов.
-
-#### Защищенные атрибуты и методы
-
-Доступны только внутри класса и его наследников. Защищенные атрибуты обычно определяются с использованием префикса `_` (одного нижнего подчеркивания) перед их именем. Например, `_protected_attribute`.
-
-#### Приватные атрибуты и методы
-
-Доступны только внутри класса, не доступны извне. Приватные атрибуты обычно определяются с использованием префикса `__` (двух нижних подчеркиваний) перед их именем. Например, `__private_attribute`.
-
-На самом деле, важно отметить, что Python использует механизм «сокрытия имени» для приватных атрибутов и методов. При определении приватного атрибута или метода, его имя изменяется путем добавления префикса `_ClassName` перед именем. Иными словами, нет строгой защиты от доступа к защищенным и приватным атрибутам и методам извне, поэтому существует соглашение, называемое «силой положительного намерения» (The Principle of Least Astonishment), которое говорит, что приватные атрибуты и методы предназначены лишь для обозначения их внутреннего использования.
+It is important to note that Python uses a name mangling mechanism for private attributes and methods. When a private attribute or method is defined, its name is changed internally by adding a `_ClassName` prefix to the original name. In other words, Python does not enforce strict protection from accessing protected or private members from outside the class. Therefore, there is a convention known as the "Principle of Least Astonishment," which states that private attributes and methods are meant to indicate their intended use for internal purposes only.
 
 ```python
 class MyClass:
     def __init__(self):
-        self.public_attribute = "Это публичный атрибут"
-        self._protected_attribute = "Это защищенный атрибут"
-        self.__private_attribute = "Это приватный атрибут"
+        self.public_attribute = "This is a public attribute"
+        self._protected_attribute = "This is a protected attribute"
+        self.__private_attribute = "This is a private attribute"
 
     def public_method(self):
-        return "Это публичный метод"
+        return "This is a public method"
 
     def _protected_method(self):
-        return "Это защищенный метод"
+        return "This is a protected method"
 
     def __private_method(self):
-        return "Это приватный метод"
+        return "This is a private method"
 
-    
 obj = MyClass()
 
-print(obj.public_attribute)  # Вывод: "Это публичный атрибут"
-print(obj._protected_attribute)  # Вывод: "Это защищенный атрибут"
-print(obj._MyClass__private_attribute)  # Вывод: "Это приватный атрибут"
+print(obj.public_attribute) # Output: "This is a public attribute"
+print(obj._protected_attribute) # Output: "This is a protected attribute"
+print(obj._MyClass__private_attribute) # Output: "This is a private attribute"
 
-print(obj.public_method())  # Вывод: "Это публичный метод"
-print(obj._protected_method())  # Вывод: "Это защищенный метод"
-print(obj._MyClass__private_method())  # Вывод: "Это приватный метод"
+print(obj.public_method()) # Output: "This is a public method"
+print(obj._protected_method()) # Output: "This is a protected method"
+print(obj._MyClass__private_method()) # Output: "This is a private method"
 ```
 
-### Полиморфизм
-
-Полиморфизм позволяет объектам разных классов иметь общий интерфейс, но вести себя по-разному.
-Так можно использовать объекты разных классов в универсальных операциях. Например, у разных классов может быть метод `speak`, и реализован он будет по-разному.
+### Polymorphism
+Polymorphism allows objects of different classes to share a common interface while behaving differently. This enables the use of objects from various classes in generic operations. For example, different classes may have a `speak` method, but each class can implement it in its own way.
 
 ```python
 class Animal:
@@ -182,15 +165,15 @@ class Animal:
 
 class Dog(Animal):
     def speak(self):
-        return f"{self.name} говорит 'Гав!'"
+        return f"{self.name} says 'Woof!'"
 
 class Cat(Animal):
     def speak(self):
-        return f"{self.name} говорит 'Мяу!'"
+        return f"{self.name} says 'Meow!'"
 
-dog = Dog("Бобик")
-cat = Cat("Мурзик")
+dog = Dog("Bobik")
+cat = Cat("Murzik")
 
-print(dog.speak())  # Вывод: "Бобик говорит 'Гав!'"
-print(cat.speak())  # Вывод: "Мурзик говорит 'Мяу!'"
+print(dog.speak()) # Output: "Bobik says 'Woof!'"
+print(cat.speak()) # Output: "Murzik says 'Meow!'"
 ```

@@ -1,10 +1,9 @@
-# Мультипарадигмальный подход
+# Multiparadigm Approach
 
-Мультипарадигмальный подход в программировании предполагает использование сразу нескольких парадигм программирования в зависимости от конкретной задачи. Мультипарадигмальный подход делает Python гибким и универсальным языком программирования, который можно использовать для различных задач, начиная от простых сценариев и заканчивая сложными проектами. Разработчики могут выбирать подход, который лучше всего соответствует конкретным требованиям и характеру
-задачи.
+The multiparadigm approach in programming involves using several programming paradigms simultaneously, depending on the specific task. This approach makes Python a flexible and versatile programming language, suitable for a wide range of tasks—from simple scripts to complex projects. Developers can choose the paradigm that best fits the specific requirements and nature of the problem.
 
 ```python
-# Объектно-ориентированный подход
+# Object-Oriented Approach
 class NumberFinder:
     def __init__(self, count: int):
         self.count = count
@@ -13,26 +12,26 @@ class NumberFinder:
         return [i for i in range(self.count) if i % 2 == 0]
     
 
-# Процедурный подход
+# Procedural Approach
 def even_numbers(count: int):
     return [i for i in range(count) if i % 2 == 0]
 
 
-# Функциональное программирование
+# Functional Programming
 def even_numbers_functional(count: int):
     return list(filter(lambda x: x % 2 == 0, range(count)))
 
 
-# Использование
+# Using
 if __name__ == "__main__":
     n = 20
     
-    # Объектно-ориентированный подход
-    print("Объектно-ориентированный подход:", NumberFinder(n).even_numbers())
+    # Object-Oriented Approach
+    print("Object-Oriented Approach:", NumberFinder(n).even_numbers())
     
-    # Процедурный подход
-    print("Процедурный подход:", even_numbers(n))
+    # Procedural Approach
+    print("Procedural Approach:", even_numbers(n))
     
-    # Функциональный подход
-    print("Функциональный подход:", even_numbers_functional(n))
+    # Functional Programming
+    print("Functional Programming:", even_numbers_functional(n))
 ```

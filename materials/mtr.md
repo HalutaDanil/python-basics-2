@@ -1,29 +1,25 @@
-# Темы
+# Topics
 
-1. ООП;
-2. Процедурный подход;
-3. Функциональная парадигма;
-4. Мультипарадигмальный подход;
-5. Отличия от C и C++;
-6. Асинхронное/параллельное программирование.
+1. OOP;
+2. Procedural approach;
+3. Functional paradigm;
+4. Multiparadigm approach;
+5. Differences from C and C++;
+6. Asynchronous/parallel programming.
 
-# Методические указания к заданиям
+# Guidelines for tasks  
 
-## Экзамен
+## **Exam**  
 
-Необходимо решить с задачу с применением мультипарадигмального подхода.
-Используй ООП и объяви классы экзаменатора, студента, вопроса.
-Поскольку обрабатывать необходимо на разных потоках, рекомендуется использовать модуль `multiprocessing`.
+The task must be solved using a multiparadigm approach. Use OOP and define classes for examiner, student, and question. Since processing should happen on different threads, it is recommended to use the `multiprocessing` module. 
 
-Для получения случайных значений можно использовать модуль `random`. Можно выбирать элементы из
-последовательности, задавать различные веса разным элементам и прочее. Предполагается, что разные веса для разных ответов надо будет назначить и экзаменаторам, поскольку они также имеют определенный пол.
+For generating random values, use the `random` module. You can select elements from a sequence, assign different weights to elements, etc. Different weights for different answers should also be assigned to examiners, as they have a defined gender.  
 
-Для ожидания и замеров времени используй модуль `time`.
+For timing and waiting, use the `time` module.  
 
-Рисовать таблицы можно любым способом, в том числе вручную, но один из неплохих вариантов - библиотека `prettytable`. Она предоставляет удобный функционал для указанной задачи.
+Tables can be drawn in any way, including manually, but one good option is the `prettytable` library, which provides convenient features for this task.  
 
-Для очистки экрана после каждой итерации, чтобы печатать новые таблицы вместо предыдущих,
-можно воспользоваться командой:
+To clear the screen after each iteration so new tables overwrite the previous ones, you can use the command:
 
 ```python
 import os
@@ -31,19 +27,7 @@ import os
 os.system('cls' if os.name == 'nt' else 'clear')
 ```
 
-Она вызывает команду `cls` на операционной системе Windows или `clear` на какой-либо другой.
-
-Чтение файлов и их обработку удобно реализовать с применением функционального подхода. Отлично подойдет функция `map`, в которую можно передать функцию создания отдельного студента, экзаменатора, вопроса, тем самым получить готовые объекты.
-
-Например, есть класс точки на плоскости и текстовый файл, в котором перечислены точки в формате f'{x} {y}':
-
-```
-3.1 5.2
-1.5 4.9
-2.1 6.3
-```
-
-Тогда можно легко получить точки из файла и сразу их обработать. Сложить все точки можно так:
+Then you can easily read points from a file and process them immediately. You can sum all the points like this:
 
 ```python
 class Point:
@@ -63,19 +47,17 @@ with open('points.txt', 'r', encoding='utf-8') as f:
     print(sum(points, next(points)))
 ```
 
-Сортировать студентов и экзаменаторов можно с помощью функции `sorted` (или метода `sort`, если возникнет необходимость сортировать исходный список). В примере выше можно отсортировать точки по убыванию координаты `x` так:
+You can sort students and examiners using the `sorted` function (or the `sort` method if you need to sort the original list). In the example above, you can sort points by descending `x`-coordinate like this:
 
 ```python
 sorted_points = sorted(points, key=lambda point: point.x, reverse=True)
 ```
 
-Аналогично, можно использовать функции `max` и `min` с `key` для определения максимума и минимума соответственно по любому правилу.
+Similarly, you can use the `max` and `min` functions with the `key` parameter to determine the maximum and minimum values according to any criterion.
 
-## Скачивание изображений
+## Image Downloading 
 
-Необходимо решить с задачу с применением мультипарадигмального подхода.
-Для написания асинхронного обработчика ссылок используй библиотеку `asyncio`.
-Сам процесс скачивания изображения можно реализовать при помощи библиотеки `requests`, в которой функция `get` позволяет получить изображение с сервера по ссылке. Полученный ответ необходимо записать в файл по байтам.
+This task should be solved using a multiparadigm approach. To write an asynchronous link handler, use the `asyncio` library. The actual image downloading process can be implemented using the `requests` library, where the `get` function retrieves the image from the server via the URL. The received response should be written to a file in bytes.
 
 ```python
 from requests import get
@@ -84,6 +66,6 @@ with open('test.jpg', 'wb') as f:
     f.write(get('https://images2.pics4learning.com/catalog/s/swamp_15.jpg').content)
 ```
 
-Дополнительно потребуется обработать ошибки, которые могут возникнуть во время выполнения запроса. Для этого следует проверить `status_code` у объекта, который возвращается функцией `get`. Проверь, указан корректный путь или нет, можно, попытавшись сохранить туда что-либо. Исключение `PermissionError` вызывается в случае, если нет доступа по указанному пути.
+Additionally, you need to handle errors that may occur during the request. To do this, check the `status_code` of the object returned by the `get` function. You can verify whether the specified path is correct by attempting to save a file there. A `PermissionError` exception is raised if there is no access to the specified path.
 
-Подобную задачу можно в том числе решить при помощи библиотеки `grequests`, которая является асинхронной обёрткой над обычной `requests`. Или же с использованием пары библиотек `asyncio` и `aiohttp`.
+This task can also be solved using the `grequests` library, which is an asynchronous wrapper over the regular `requests`. Alternatively, you can use the combination of the `asyncio` and `aiohttp` libraries.

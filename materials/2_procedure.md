@@ -1,18 +1,16 @@
-# Процедурный подход
+# Procedural Programming
 
-Процедурный подход — это способ организации программы, при котором задачи разбиваются на небольшие процедуры или функции.
-Каждая функция выполняет конкретную задачу и может быть вызвана из других частей программы.
+The procedural approach is a way of organizing a program by breaking tasks down into smaller procedures or functions. Each function performs a specific task and can be called from other parts of the program.
 
-Вместо того чтобы писать весь код в одном месте, создаются функции и/или процедуры, которые реализуют определенные части логики программы. Процедурный подход помогает упростить код и сделать его более понятным и модульным.
+Instead of writing all code in one place, functions and/or procedures are created to implement specific parts of the program logic. Procedural programming helps simplify code and make it more readable and modular.
 
 ```python
-def сложение(a, b):
-    сумма = a + b
-    return сумма
+def addition(a, b):
+    result = a + b
+    return result
 
-
-результат = сложение(2, 3)
-print(результат)  # Выведет 5
+output = addition(2, 3)
+print(output) # Outputs: 5
 ```
 
-> **Процедура** — это набор инструкций, которые выполняют определенную задачу. Она может принимать аргументы и изменять состояние программы, но в отличие от функции, она не возвращает какое-либо значение. Процедура обычно используется для выполнения определенных действий, например, для печати текста на экране или для изменения значений переменных.
+> **A procedure** is a set of instructions that performs a specific task. It can accept arguments and modify the program state, but unlike a function, it does not return a value. Procedures are typically used to perform actions such as printing to the screen or modifying variable values.

@@ -1,12 +1,12 @@
-# Асинхронное и параллельное программирование
+# **Asynchronous and Parallel Programming**
 
-Асинхронное и параллельное программирование — это методы, позволяющие выполнять несколько задач одновременно для увеличения эффективности и скорости работы программы в зависимости от типа задачи и доступных ресурсов.
+Asynchronous and parallel programming are techniques that allow multiple tasks to run concurrently, improving a program’s efficiency and performance depending on the type of task and available resources.
 
-## Параллельное программирование
+## **Parallel Programming**
 
-Параллельное программирование позволяет выполнить несколько задач одновременно, распределяя их между несколькими процессорами или ядрами процессора. В Python для параллельного программирования часто используется модуль `multiprocessing`. Он позволяет создавать процессы, каждый из которых выполняется независимо, и обеспечивает механизмы для передачи данных между процессами и выполнения параллельных задач.
+Parallel programming enables multiple tasks to be executed simultaneously by distributing them across multiple processors or processor cores. In Python, the `multiprocessing` module is commonly used for parallel programming. It allows for the creation of processes that run independently and provides mechanisms for data exchange between processes and parallel task execution.
 
-Рассмотрим пример программы, которая создает очередь для передачи данных между вводом/выводом и рабочим процессом. Пусть программа позволяет пользователю вводить числа с клавиатуры, которые в другом процессе записываются в файлы.
+Let’s look at an example of a program that creates a queue to transfer data between input/output and a worker process. Suppose the program allows the user to input numbers via the keyboard, which are then written to files by another process.
 
 ```python
 import multiprocessing
@@ -15,21 +15,21 @@ import time
 
 def process(i: int):
     """
-    Функция, которая представляет собой задачу обработки.
-    Ждет i секунд и записывает строку в файл с именем {i}.txt.
-    :param i: Время обработки, число для сохранения.
-    :return:
+    Function representing a processing task.
+    Waits i seconds and writes a line to a file named {i}.txt.
+    :param i: Processing time, number to save.
+    :return
     """
 
     time.sleep(i)
-    with open(f'{i}.txt', 'w', encoding='utf-8') as file:
-        file.write(f'Hello, {i}!')
+    with open(f"{i}.txt", "w", encoding="utf-8") as file:
+        file.write(f"Hello, {i}!")
 
 
 def worker(queue: multiprocessing.Queue):
     """
-    Бесконечно извлекает элементы из очереди и отправляет их на обработку функции process.
-    :param queue: Очередь элементов для обработки.
+    Continuously extracts items from the queue and sends them for processing via the process function.
+    :param queue: Queue of items to process.
     :return:
     """
 
@@ -39,14 +39,15 @@ def worker(queue: multiprocessing.Queue):
 
 def iostream(queue: multiprocessing.Queue):
     """
-    Ждет ввода с консоли до тех пор, пока не будет введено нечисловое значение.
-    Введенные числа добавляются в очередь для последующей обработки.
-    :param queue: Очередь элементов для обработки.
+    Waits for console input until a non-numeric value is entered.
+    Entered numbers are added to the queue for further processing.
+
+    :param queue: Queue of items to process.
     :return:
     """
 
     while True:
-        n = input("Введите число: ")
+        n = input("Enter a number: ")
         if not n.strip().isdigit():
             break
         queue.put(int(n))
@@ -54,47 +55,49 @@ def iostream(queue: multiprocessing.Queue):
 
 def main():
     """
-    Создает отдельный поток для обработки элементов и дожидается его завершения.
-    Также обрабатывает основной поток.
+    Creates a separate process for processing items and waits for its completion.
+    Also handles the main thread.
     :return:
     """
 
-    # Создание очереди элементов для обработки
+    #  Create a queue of items to process
     queue = multiprocessing.Queue()
 
-    # Создание процесса
+    # Process creation
     worker_process = multiprocessing.Process(target=worker, args=(queue,))
 
-    # Обработка в отдельном потоке
-    print('Начало работы')
+    # Process in a separate thread
+    print("Starting work")
     worker_process.start()
 
-    # Ввод в основном потоке
+    # Input in the main thread
     iostream(queue)
 
-    # Ожидание обработки оставшихся в очереди элементов
-    print('Завершение работы')
+    # Wait for processing remaining items in the queue
+    print("Finishing work")
     while not queue.empty():
         pass
 
-    # Завершение процесса
+    # Terminate the process
     worker_process.terminate()
     while worker_process.is_alive():
         pass
     worker_process.close()
-    print('Конец работы')
+    print("Work ended")
 
 
-if __name__ == '__main__':
-    # Запуск основной функции
+if __name__ == "__main__":
+
+    # Run the main function
     main()
+
 ```
 
-## Асинхронное программирование
+## Asynchronous Programming
 
-Асинхронное программирование позволяет создавать эффективные и отзывчивые программы, которые не блокируются при ожидании завершения операций ввода/вывода (I/O) или других задержек. В Python для этого используется модуль `asyncio`. Он предоставляет средства для написания асинхронного кода с использованием ключевых слов `async` и `await`. Модуль основан на концепции корутин (coroutines) и позволяет организовать параллельное выполнение множества задач, используя один поток исполнения.
+Asynchronous programming allows creating efficient and responsive programs that do not block while waiting for I/O operations or other delays to complete. In Python, this is achieved using the asyncio module. It provides tools for writing asynchronous code using the async and await keywords. The module is based on the concept of coroutines and enables parallel execution of multiple tasks within a single thread.
 
-Рассмотрим пример программы, которая создает очередь для передачи данных между вводом/выводом и рабочим процессом. Пусть программа позволяет пользователю вводить числа с клавиатуры, которые асинхронно записываются в файлы.
+Consider an example program that creates a queue to transfer data between input/output and a worker process. The program allows the user to input numbers from the keyboard, which are then asynchronously written to files.
 
 ```python
 import asyncio
@@ -104,22 +107,22 @@ from aioconsole import ainput
 
 async def process(i: int):
     """
-    Асинхронная функция, которая представляет собой задачу обработки.
-    Ждет i секунд и записывает строку в файл с именем {i}.txt.
-    :param i: Время обработки, число для сохранения.
+    Asynchronous function representing a processing task.
+    Waits i seconds and writes a line to a file named {i}.txt.
+    :param i: Processing time, number to save.
     :return:
     """
 
     await asyncio.sleep(i)
-    with open(f'{i}.txt', 'w', encoding='utf-8') as file:
-        file.write(f'Hello, {i}!')
+    with open(f"{i}.txt", "w", encoding="utf-8") as file:
+        file.write(f"Hello, {i}!")
 
 
 async def worker(queue: asyncio.Queue):
     """
-    Асинхронный рабочий процесс, который бесконечно извлекает элементы из очереди
-    и отправляет их на обработку функции process.
-    :param queue: Очередь элементов для обработки.
+    Asynchronous worker process that continuously takes items from the queue
+    and sends them to the process function.
+    :param queue: Queue of items to process.
     :return:
     """
 
@@ -131,31 +134,33 @@ async def worker(queue: asyncio.Queue):
 
 async def iostream(queue: asyncio.Queue):
     """
-    Асинхронный процесс, который ждет ввода с консоли до тех пор, пока не будет введено нечисловое значение.
-    Введенные числа добавляются в очередь для последующей обработки.
-    :param queue: Очередь элементов для обработки.
+    Asynchronous process that waits for console input until a non-numeric value is entered.
+    Entered numbers are added to the queue for further processing.
+    :param queue: Queue of items to process.
     :return:
     """
 
     while True:
-        n = await ainput("Введите число: ")
+        n = await ainput("Enter a number: ")
         if not n.strip().isdigit():
             break
-        await queue.put(int(n))
+    await queue.put(int(n))
 
 
-async def manager(queue: asyncio.Queue, iostream_task: asyncio.Task, worker_task: asyncio.Task):
+async def manager(
+    queue: asyncio.Queue, iostream_task: asyncio.Task, worker_task: asyncio.Task
+):
     """
-    Менеджер координирует работу между вводом/выводом и рабочим процессом.
-    Дожидается окончания ввода/вывода и обработки накопившейся очереди и завершает рабочий процесс.
-    :param queue: Очередь элементов для обработки.
-    :param iostream_task: Процесс ввода/вывода.
-    :param worker_task: Рабочий процесс.
+    Manager coordinates between input/output and worker process.
+    Waits for iostream completion and processing of queued items, then stops the worker.
+    :param queue: Queue of items to process.
+    :param iostream_task: Input/output task.
+    :param worker_task: Worker task.
     :return:
     """
 
     await iostream_task
-    print('Завершение работы')
+    print("Finishing work")
     await queue.join()
     worker_task.cancel()
     await worker_task
@@ -163,28 +168,31 @@ async def manager(queue: asyncio.Queue, iostream_task: asyncio.Task, worker_task
 
 async def main():
     """
-    Основная функция, которая создает асинхронные задачи для ввода/вывода, рабочего процесса и менеджера и дожидается их завершения.
+    Main function that creates asynchronous tasks for I/O, worker, and manager and waits for their completion.
     :return:
     """
 
-    # Создание очереди элементов для обработки
+    # Creating a queue of elements for processing
     queue = asyncio.Queue()
 
-    # Создание задач
+    # Creating tasks
     worker_task = asyncio.create_task(worker(queue))
     iostream_task = asyncio.create_task(iostream(queue))
     manager_task = asyncio.create_task(manager(queue, iostream_task, worker_task))
 
-    # Одновременное выполнение задач
-    print('Начало работы')
-    with suppress(asyncio.exceptions.CancelledError):  # Подавление CancelledError (возникает при отмене задачи)
-        await asyncio.gather(iostream_task, worker_task, manager_task)
-    print('Конец работы')
+    # Run multiple tasks concurrently
+    print("Starting work")
 
+    with suppress(asyncio.CancelledError):
+        # Suppress CancelledError (raised when a task is cancelled)
+        await asyncio.gather(iostream_task, worker_task, manager_task)
+
+
+print("Work ended")
 
 if __name__ == "__main__":
-    # Запуск основной функции
+    # Run the main function
     asyncio.run(main())
 ```
 
-> **Обрати внимание!** В асинхронном коде используется только один поток исполнения, а функция `input` его блокирует. Есть библиотека `aioconsole`, где на низком уровне правильно организована работа с консолью. Это позволяет не блокировать единственный поток, используя `ainput` с `await` вместо обычного `input`.
+> **Note:** In asynchronous code, only a single thread of execution is used, and the standard `input` function will block it. There is a library called **`aioconsole`** that handles console I/O correctly at a low level. This allows you to avoid blocking the event loop by using `ainput` with `await` instead of the regular `input`.
