@@ -76,7 +76,7 @@ When the program starts:
 
 The exam then begins.
 
-Each examiner conducts exams on a separate thread.
+Each examiner conducts exams on a separate process.
 
 During execution, the console must display up-to-date exam information, including:
 
