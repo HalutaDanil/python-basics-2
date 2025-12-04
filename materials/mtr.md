@@ -11,7 +11,7 @@
 
 ## **Exam**  
 
-The task must be solved using a multiparadigm approach. Use OOP and define classes for examiner, student, and question. Since processing should happen on different threads, it is recommended to use the `multiprocessing` module. 
+The task must be solved using a multiparadigm approach. Use OOP and define classes for examiner, student, and question. Since processing should happen on different processes, it is recommended to use the `multiprocessing` module. 
 
 For generating random values, use the `random` module. You can select elements from a sequence, assign different weights to elements, etc. Different weights for different answers should also be assigned to examiners, as they have a defined gender.  
 

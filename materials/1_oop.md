@@ -2,17 +2,27 @@
 
 OOP is a programming paradigm used to structure and organize code as interacting objects.
 
-**Classes** are templates or blueprints for creating objects. They define the attributes (variables) and methods (functions) that will be available to the objects of that class. In Python, classes are defined using the `class` keyword.
+Classes are templates or blueprints for creating objects. They define the attributes (variables) and methods (functions) that will be available to the objects of that class. In Python, classes are defined using the `class` keyword.
 
-**Objects** are specific instances of classes. They are created based on classes using a class constructor.
+Objects are specific instances of classes. They are created based on classes using a class constructor.
 
-The **constructor** of a class is the `__init__` method, which is called when a new object is created. Initial attribute values for the object can be set in the constructor.
+Object initialization is performed using the `__init__` method, which is automatically called after a new object is created. This method sets the initial values of the object's attributes (although technically attributes can be added later as well). When referring to a class constructor in Python, it's usually the `__init__` method that is meant.
 
-**Attributes** are variables that belong to class objects. They can be unique to each object (instance) or shared among all objects of a class. Attributes can be defined inside class methods or in the constructor.
+*Note on object creation in Python:* The process of creating an object in Python consists of two stages:
+1. Creation — performed by the `__new__(cls, ...)` method, which creates and returns a new instance of the class.
+2. Initialization — performed by the `__init__(self, ...)` method, which configures the newly created instance.
 
-**Methods** are functions that belong to class objects. They can perform operations on the object’s data or return values. Methods can be common to all objects of the class or unique to each one.
+In 99% of cases, it is sufficient to define only `__init__`, since the standard implementation of `__new__` already creates the instance correctly. The `__new__` method is only required for special tasks (creating immutable objects, implementing the Singleton pattern, etc.).
 
-**Dunder methods** (also known as special methods or magic methods) are special methods with double underscores at the beginning and end of their names. There are many of them, and they allow overriding the default behavior of operators and built-in functions for class objects. For example, `__init__` is a special method called when an object is created, `__str__` is used to define the string representation of an object, `__add__` defines how the + operator works on instances of the class, and so on.
+Attributes are variables that belong to class objects. They can be unique to each object (instance) or shared among all objects of a class. Attributes can be defined inside class methods or in the `__init__` method.
+
+Methods are functions that belong to class objects. They can perform operations on the object's data or return values. Methods can be common to all objects of the class or unique to each one.
+
+Dunder methods (also known as special methods or magic methods) are special methods with double underscores at the beginning and end of their names. There are many of them, and they allow overriding the default behavior of operators and built-in functions for class objects. For example:
+- `__init__` — object initialization method
+- `__str__` — used to define the string representation of an object
+- `__add__` — defines how the `+` operator works for class instances
+and so on.
 
 ```python
 class Circle:

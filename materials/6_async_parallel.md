@@ -56,7 +56,7 @@ def iostream(queue: multiprocessing.Queue):
 def main():
     """
     Creates a separate process for processing items and waits for its completion.
-    Also handles the main thread.
+    Also handles the main process.
     :return:
     """
 
@@ -66,11 +66,11 @@ def main():
     # Process creation
     worker_process = multiprocessing.Process(target=worker, args=(queue,))
 
-    # Process in a separate thread
+    # Process in a separate process
     print("Starting work")
     worker_process.start()
 
-    # Input in the main thread
+    # Input in the main process
     iostream(queue)
 
     # Wait for processing remaining items in the queue
