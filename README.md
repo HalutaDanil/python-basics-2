@@ -51,6 +51,8 @@ Topics to explore:
 For example: `T01/src/exercise0`, `T01/src/exercise1`, ..., `T01/src/exerciseN-1`, where **N** is the total number of tasks.  
 If one task builds upon the previous one, simply copy the previous project into the new directory and continue development from there.
 
+Be sure to follow the instructions for the tasks specified in the materials.
+
 ### Task 1. Exam
 
 Students are lining up to take an exam. Several examiners are working simultaneously. All students wait in a single, shared queue. As soon as an examiner becomes available, the next student in line goes in for their exam.
