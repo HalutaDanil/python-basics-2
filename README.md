@@ -11,23 +11,24 @@
 <a name="english"></a>
 ## 🇬🇧 English
 
-A complex multiprocessing simulation of an examination session. The system models interactions between students, examiners, and questions in real-time with terminal visualization.
+Two tasks exploring OOP, multiprocessing, asynchronous programming, and functional patterns in Python.
 
-### 🛠️ Tech Stack
+### What was done
 
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) ![Multiprocessing](https://img.shields.io/badge/Multiprocessing-4EAA25?style=flat-square)
+| Task | What & Why |
+|------|-----------|
+| Exam Simulation | Built a multiprocessing simulation of an exam session. Students queue up, examiners work in parallel processes, and a monitor updates ASCII tables in real time. Each examiner takes a lunch break 30 seconds after start. Exam duration depends on the examiner's name length. Pass/fail logic combines random mood (good/bad/neutral) with answer correctness. The golden ratio distribution biases word choice by gender: boys pick earlier words, girls pick later ones. |
+| Image Downloader | Wrote an asynchronous image downloader. The user enters URLs one by one; downloads happen in the background. The program waits for all pending downloads before exiting and prints a summary table of successes and failures. |
 
-### ✨ Features
+### Key takeaways
+- **Multiprocessing** with `Manager` and `Lock` allows safe shared state across processes.
+- Real-time terminal UI is possible with careful use of ANSI escape codes and in-place printing.
+- **Asynchronous I/O** (`asyncio`) is ideal for network-bound tasks like downloading files.
+- Combining probability, timing, and state machines creates surprisingly realistic simulations.
 
-| Feature | Description |
-|---------|-------------|
-| Student class | Tracks status, timing, results |
-| Examiner class | Manages lunch breaks, work time |
-| Question class | Weighted random word selection |
-| Exam class | Golden ratio weighting algorithm |
-| Real-time monitor | Live ASCII tables in terminal |
-| Statistics | Best students, examiners, questions |
+### Tech Stack
 
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) ![Multiprocessing](https://img.shields.io/badge/Multiprocessing-4EAA25?style=flat-square) ![Asyncio](https://img.shields.io/badge/Asyncio-3776AB?style=flat-square)
 
 ---
 
@@ -38,23 +39,24 @@ A complex multiprocessing simulation of an examination session. The system model
 <a name="русский"></a>
 ## 🇷🇺 Русский
 
-Сложная многопроцессорная симуляция экзаменационной сессии. Система моделирует взаимодействие студентов, экзаменаторов и вопросов в реальном времени с визуализацией в терминале.
+Две задачи, изучающие ООП, многопроцессность, асинхронное программирование и функциональные паттерны в Python.
 
-### 🛠️ Стек технологий
+### Что было сделано
 
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) ![Multiprocessing](https://img.shields.io/badge/Multiprocessing-4EAA25?style=flat-square)
+| Задача | Что и зачем |
+|--------|-------------|
+| Симуляция экзамена | Многопроцессная симуляция экзаменационной сессии. Студенты стоят в очереди, экзаменаторы работают в параллельных процессах, монитор обновляет ASCII-таблицы в реальном времени. Каждый экзаменатор уходит на обед через 30 секунд. Длительность экзамена зависит от длины имени экзаменатора. Логика сдачи/завала комбинирует случайное настроение (хорошее/плохое/нейтральное) и правильность ответов. Распределение по золотому сечению смещает выбор слова в зависимости от пола: мальчики выбирают слова ближе к началу, девочки — ближе к концу. |
+| Загрузчик изображений | Асинхронный загрузчик изображений. Пользователь вводит URL по одному; загрузки происходят в фоне. Программа дожидается завершения всех загрузок перед выходом и выводит итоговую таблицу успехов и ошибок. |
 
-### ✨ Возможности
+### Ключевые выводы
+- **Многопроцессность** с `Manager` и `Lock` позволяет безопасно разделять состояние между процессами.
+- Real-time терминальный UI возможен через аккуратное использование ANSI escape-кодов и печати на месте.
+- **Асинхронный I/O** (`asyncio`) идеален для сетевых задач вроде скачивания файлов.
+- Комбинация вероятности, таймингов и конечных автоматов создаёт удивительно реалистичные симуляции.
 
-| Компонент | Описание |
-|-----------|----------|
-| Класс Student | Отслеживание статуса, времени, результатов |
-| Класс Examiner | Управление обедами, рабочим временем |
-| Класс Question | Взвешенный случайный выбор слов |
-| Класс Exam | Алгоритм взвешивания по золотому сечению |
-| Мониторинг | Живые ASCII-таблицы в терминале |
-| Статистика | Лучшие студенты, экзаменаторы, вопросы |
+### Стек технологий
 
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) ![Multiprocessing](https://img.shields.io/badge/Multiprocessing-4EAA25?style=flat-square) ![Asyncio](https://img.shields.io/badge/Asyncio-3776AB?style=flat-square)
 
 ---
 
