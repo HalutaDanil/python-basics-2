@@ -19,11 +19,22 @@ A complex multiprocessing simulation of an examination session. The system model
 
 ### ✨ Features
 
-| Feature | Description |\n|---------|-------------|\n| Student class | Tracks status, timing, results |\n| Examiner class | Manages lunch breaks, work time |\n| Question class | Weighted random word selection |\n| Exam class | Golden ratio weighting algorithm |\n| Real-time monitor | Live ASCII tables in terminal |\n| Statistics | Best students, examiners, questions |
+| Feature | Description |
+|---------|-------------|
+| Student class | Tracks status, timing, results |
+| Examiner class | Manages lunch breaks, work time |
+| Question class | Weighted random word selection |
+| Exam class | Golden ratio weighting algorithm |
+| Real-time monitor | Live ASCII tables in terminal |
+| Statistics | Best students, examiners, questions |
 
 ### 🚀 Quick Start
 
-```bash\ncd src/exersice1\npython main.py\n# Watch real-time exam simulation\n```
+```bash
+cd src/exersice1
+python main.py
+# Watch real-time exam simulation
+```
 
 ---
 
@@ -42,11 +53,22 @@ A complex multiprocessing simulation of an examination session. The system model
 
 ### ✨ Возможности
 
-| Компонент | Описание |\n|-----------|----------|\n| Класс Student | Отслеживание статуса, времени, результатов |\n| Класс Examiner | Управление обедами, рабочим временем |\n| Класс Question | Взвешенный случайный выбор слов |\n| Класс Exam | Алгоритм взвешивания по золотому сечению |\n| Мониторинг | Живые ASCII-таблицы в терминале |\n| Статистика | Лучшие студенты, экзаменаторы, вопросы |
+| Компонент | Описание |
+|-----------|----------|
+| Класс Student | Отслеживание статуса, времени, результатов |
+| Класс Examiner | Управление обедами, рабочим временем |
+| Класс Question | Взвешенный случайный выбор слов |
+| Класс Exam | Алгоритм взвешивания по золотому сечению |
+| Мониторинг | Живые ASCII-таблицы в терминале |
+| Статистика | Лучшие студенты, экзаменаторы, вопросы |
 
 ### 🚀 Быстрый старт
 
-```bash\ncd src/exersice1\npython main.py\n# Наблюдайте за симуляцией экзамена в реальном времени\n```
+```bash
+cd src/exersice1
+python main.py
+# Наблюдайте за симуляцией экзамена в реальном времени
+```
 
 ---
 
