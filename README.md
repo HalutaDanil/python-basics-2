@@ -28,13 +28,6 @@ A complex multiprocessing simulation of an examination session. The system model
 | Real-time monitor | Live ASCII tables in terminal |
 | Statistics | Best students, examiners, questions |
 
-### 🚀 Quick Start
-
-```bash
-cd src/exersice1
-python main.py
-# Watch real-time exam simulation
-```
 
 ---
 
@@ -62,13 +55,6 @@ python main.py
 | Мониторинг | Живые ASCII-таблицы в терминале |
 | Статистика | Лучшие студенты, экзаменаторы, вопросы |
 
-### 🚀 Быстрый старт
-
-```bash
-cd src/exersice1
-python main.py
-# Наблюдайте за симуляцией экзамена в реальном времени
-```
 
 ---
 
